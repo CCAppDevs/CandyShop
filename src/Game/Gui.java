@@ -8,7 +8,7 @@ public class Gui extends JFrame {
 	
 	private JPanel mainPanel;
 	private TopPanel topPanel;
-	private JPanel midPanel;
+	private MidPanel midPanel;
 
 	public Gui() {
 		setMinimumSize(new Dimension(800, 600));
@@ -21,8 +21,7 @@ public class Gui extends JFrame {
 		this.topPanel = new TopPanel();
 		this.mainPanel.add(this.topPanel);
 		
-		this.midPanel = new JPanel();
-		this.midPanel.setLayout(new BoxLayout(this.midPanel, BoxLayout.X_AXIS));
+		this.midPanel = new MidPanel();
 		this.mainPanel.add(this.midPanel);
 		
 		
