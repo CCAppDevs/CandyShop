@@ -11,18 +11,20 @@ public class Gui extends JFrame {
 	private MidPanel midPanel;
 
 	public Gui() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 		setMinimumSize(new Dimension(800, 600));
 		
 		// setup panels
 		this.mainPanel = new JPanel();
-		this.mainPanel.setLayout(new BoxLayout(this.mainPanel, BoxLayout.Y_AXIS));
-		add(this.mainPanel);
+		this.mainPanel.setPreferredSize(new Dimension(800, 100));
+		//this.mainPanel.setLayout(new BoxLayout(this.mainPanel, BoxLayout.Y_AXIS));
+		add(this.mainPanel, BorderLayout.CENTER);
 		
 		this.topPanel = new TopPanel();
-		this.mainPanel.add(this.topPanel);
+		this.mainPanel.add(this.topPanel, BorderLayout.PAGE_START);
 		
 		this.midPanel = new MidPanel();
-		this.mainPanel.add(this.midPanel);
+		this.mainPanel.add(this.midPanel, BorderLayout.CENTER);
 		
 		
 		setVisible(true);
