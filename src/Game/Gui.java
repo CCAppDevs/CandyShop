@@ -9,8 +9,10 @@ public class Gui extends JFrame {
 	private JPanel mainPanel;
 	private TopPanel topPanel;
 	private MidPanel midPanel;
+	private GameState gameState;
 
 	public Gui() {
+		this.gameState = new GameState();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 		setMinimumSize(new Dimension(800, 600));
 		
@@ -20,10 +22,10 @@ public class Gui extends JFrame {
 		//this.mainPanel.setLayout(new BoxLayout(this.mainPanel, BoxLayout.Y_AXIS));
 		add(this.mainPanel, BorderLayout.CENTER);
 		
-		this.topPanel = new TopPanel();
+		this.topPanel = new TopPanel(this.gameState);
 		this.mainPanel.add(this.topPanel, BorderLayout.PAGE_START);
 		
-		this.midPanel = new MidPanel();
+		this.midPanel = new MidPanel(this.gameState);
 		this.mainPanel.add(this.midPanel, BorderLayout.CENTER);
 		
 		

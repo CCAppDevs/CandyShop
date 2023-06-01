@@ -9,20 +9,20 @@ public class TopPanel extends JPanel {
 	private JLabel lblBank;
 	private JLabel lblDebtLabel;
 	private JLabel lblDebt;
+
+	private GameState gameState;
 	
-	private double bank;
-	private double debt;
-	
-	public TopPanel() {
+	public TopPanel(GameState state) {
 		super();
+		
+		this.gameState = state;
+
 		setPreferredSize(new Dimension(800, 25));
-		this.bank = 100;
-		this.debt = 0;
 		
 		this.lblMoney = new JLabel("Money:");
-		this.lblBank = new JLabel("$" + this.bank);
+		this.lblBank = new JLabel("$" + this.gameState.Bank);
 		this.lblDebtLabel = new JLabel("Debt:");
-		this.lblDebt = new JLabel("$" + this.debt);
+		this.lblDebt = new JLabel("$" + this.gameState.Debt);
 		
 		add(this.lblMoney, BorderLayout.CENTER);
 		add(this.lblBank, BorderLayout.CENTER);
