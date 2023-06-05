@@ -13,9 +13,9 @@ public class MidPanel extends JPanel {
 	private JPanel CenterPanel;
 	private JPanel RightPanel;
 	
-	private JButton btnAdd;
-	private JButton btnRemove;
-	private JButton btnNextDay;
+	private GameActionButton btnAdd;
+	private GameActionButton btnRemove;
+	private GameActionButton btnNextDay;
 	
 	private JList lstWarehouse;
 	private JList lstShop;
@@ -30,36 +30,25 @@ public class MidPanel extends JPanel {
 		
 		this.LeftPanel = new JPanel();
 
-		this.lstWarehouse = new JList(this.gameState.Warehouse.toArray());
+		this.lstWarehouse = new JList(this.gameState.Warehouse);
 		this.lstWarehouse.setPreferredSize(new Dimension(325, 500));
 		this.LeftPanel.add(lstWarehouse, BorderLayout.CENTER);
 		
 		this.CenterPanel = new JPanel();
 		this.CenterPanel.setLayout(new BoxLayout(this.CenterPanel, BoxLayout.Y_AXIS));
 		
-		this.btnAdd = new JButton("Add");
-		this.btnAdd.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				this.gameState.buyCandy(new Candy("Jawbreaker", 0.05));
-			}
-			
-		});
-		this.btnAdd.setAlignmentX(CENTER_ALIGNMENT);
+		this.btnAdd = new GameActionButton("Add", this.gameState, "add");
 		this.CenterPanel.add(this.btnAdd);
 		
-		this.btnRemove = new JButton("Remove");
-		this.btnRemove.setAlignmentX(CENTER_ALIGNMENT);
+		this.btnRemove = new GameActionButton("Remove", this.gameState, "remove");
 		this.CenterPanel.add(this.btnRemove);
 		
-		this.btnNextDay = new JButton("Next Day");
-		this.btnNextDay.setAlignmentX(CENTER_ALIGNMENT);
+		this.btnNextDay = new GameActionButton("Next Day", this.gameState, "next");
 		this.CenterPanel.add(this.btnNextDay);
 		
 		this.RightPanel = new JPanel();
 
-		this.lstShop = new JList(this.gameState.Shop.toArray());
+		this.lstShop = new JList(this.gameState.Shop);
 		this.lstShop.setPreferredSize(new Dimension(325, 500));
 		this.RightPanel.add(lstShop);
 		
@@ -68,6 +57,4 @@ public class MidPanel extends JPanel {
 		add(this.CenterPanel, BorderLayout.CENTER);
 		add(this.RightPanel, BorderLayout.PAGE_END);
 	}
-	
-	
 }
