@@ -24,7 +24,7 @@ public class GameActionButton extends JButton implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (btnType == "add" ) {
 			System.out.println("Add button clicked");
-			this.State.buyCandy(new Candy("Jawbreaker", 0.05));	
+			this.State.buyCandy();	
 		} else if (btnType == "remove") {
 			// this.State.removeCandy(new Candy("Jawbreaker", 0.05));
 		} else if (btnType == "next") {

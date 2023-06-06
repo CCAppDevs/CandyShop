@@ -17,8 +17,8 @@ public class MidPanel extends JPanel {
 	private GameActionButton btnRemove;
 	private GameActionButton btnNextDay;
 	
-	private JList lstWarehouse;
-	private JList lstShop;
+	private PurchaseList lstWarehouse;
+	private PurchaseList lstShop;
 	
 	private GameState gameState;
 	
@@ -30,9 +30,10 @@ public class MidPanel extends JPanel {
 		
 		this.LeftPanel = new JPanel();
 
-		this.lstWarehouse = new JList(this.gameState.Warehouse);
-		this.lstWarehouse.setPreferredSize(new Dimension(325, 500));
-		this.LeftPanel.add(lstWarehouse, BorderLayout.CENTER);
+		this.lstWarehouse = new PurchaseList(this.gameState.Warehouse, this.gameState, "warehouse");
+		JScrollPane warehouseScroll = new JScrollPane(lstWarehouse);
+		warehouseScroll.setPreferredSize(new Dimension(325, 500));
+		this.LeftPanel.add(warehouseScroll, BorderLayout.CENTER);
 		
 		this.CenterPanel = new JPanel();
 		this.CenterPanel.setLayout(new BoxLayout(this.CenterPanel, BoxLayout.Y_AXIS));
@@ -48,9 +49,10 @@ public class MidPanel extends JPanel {
 		
 		this.RightPanel = new JPanel();
 
-		this.lstShop = new JList(this.gameState.Shop);
-		this.lstShop.setPreferredSize(new Dimension(325, 500));
-		this.RightPanel.add(lstShop);
+		this.lstShop = new PurchaseList(this.gameState.Shop, this.gameState, "shop");
+		JScrollPane shopScroll = new JScrollPane(lstShop);
+		//shopScroll.setPreferredSize(new Dimension(325, 500));
+		this.RightPanel.add(shopScroll);
 		
 		
 		add(this.LeftPanel, BorderLayout.PAGE_START);

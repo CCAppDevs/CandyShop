@@ -11,6 +11,9 @@ public class GameState {
 	public DefaultListModel<Candy> Warehouse;
 	public DefaultListModel<Candy> Shop;
 	
+	public int warehouseSelectedIndex = -1;
+	public int shopSelectedIndex = -1;
+	
 	public GameState() {
 		super();
 		this.Day = 1;
@@ -26,23 +29,22 @@ public class GameState {
 		this.Shop = new DefaultListModel<Candy>();
 	}
 	
-	public boolean buyCandy(Candy item) {
-		// do we have enough money to buy the item?
-			// if not, return false
-		System.out.println("Buying candy" + item.Name);
+	public boolean buyCandy() {
+		Candy purchased = this.Warehouse.getElementAt(warehouseSelectedIndex);
+		System.out.println("Buying candy" + purchased.Name);
 		
-		if (this.Bank < item.Cost) {
+		if (this.Bank < purchased.Cost) {
 			return false;
 		}
 		
-		// subtract the money
-		this.Bank = this.Bank - item.Cost;
+		this.Bank = this.Bank - purchased.Cost;
 		
-		// add the new candy to the shop
-		this.Shop.addElement(item);
+		this.Shop.addElement(purchased);
 		
 		return true;
 	}
 	
-	
+	// removeCandy function
+
+	// next Day function 
 }
