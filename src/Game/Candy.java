@@ -9,12 +9,12 @@ public class Candy {
 		super();
 		Name = name;
 		Cost = cost;
-		Price = 0;
+		Price = Cost * 2;
 	}
 
 	@Override
 	public String toString() {
-		return Name + ", " + Cost;
+		return Name + ", Cost: " + Cost + ", Price: " + Price;
 	}
 	
 	

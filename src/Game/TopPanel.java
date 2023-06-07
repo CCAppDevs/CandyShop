@@ -9,6 +9,8 @@ public class TopPanel extends JPanel {
 	private JLabel lblBank;
 	private JLabel lblDebtLabel;
 	private JLabel lblDebt;
+	private JLabel lblDayLabel;
+	private JLabel lblDay;
 
 	private GameState gameState;
 	
@@ -23,11 +25,20 @@ public class TopPanel extends JPanel {
 		this.lblBank = new JLabel("$" + this.gameState.Bank);
 		this.lblDebtLabel = new JLabel("Debt:");
 		this.lblDebt = new JLabel("$" + this.gameState.Debt);
+		this.lblDayLabel = new JLabel("Day:");
+		this.lblDay = new JLabel(Integer.toString(this.gameState.Day));
 		
 		add(this.lblMoney, BorderLayout.CENTER);
 		add(this.lblBank, BorderLayout.CENTER);
 		add(this.lblDebtLabel, BorderLayout.CENTER);
 		add(this.lblDebt, BorderLayout.CENTER);
+		add(this.lblDayLabel, BorderLayout.CENTER);
+		add(this.lblDay, BorderLayout.CENTER);
 	}
 	
+	public void updateValues() {
+		this.lblBank.setText("$" + this.gameState.Bank);
+		this.lblDebt.setText("$" + this.gameState.Debt);
+		this.lblDay.setText(Integer.toString(this.gameState.Day));
+	}
 }

@@ -48,10 +48,9 @@ public class MidPanel extends JPanel {
 		this.CenterPanel.add(this.btnNextDay);
 		
 		this.RightPanel = new JPanel();
-
 		this.lstShop = new PurchaseList(this.gameState.Shop, this.gameState, "shop");
 		JScrollPane shopScroll = new JScrollPane(lstShop);
-		//shopScroll.setPreferredSize(new Dimension(325, 500));
+		shopScroll.setPreferredSize(new Dimension(325, 500));
 		this.RightPanel.add(shopScroll);
 		
 		

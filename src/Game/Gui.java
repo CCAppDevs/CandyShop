@@ -24,6 +24,7 @@ public class Gui extends JFrame {
 		
 		this.topPanel = new TopPanel(this.gameState);
 		this.mainPanel.add(this.topPanel, BorderLayout.PAGE_START);
+		this.gameState.registerTopPanel(topPanel);
 		
 		this.midPanel = new MidPanel(this.gameState);
 		this.mainPanel.add(this.midPanel, BorderLayout.CENTER);
