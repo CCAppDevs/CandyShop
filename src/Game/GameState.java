@@ -1,7 +1,6 @@
 package Game;
 
 import java.util.ArrayList;
-
 import javax.swing.DefaultListModel;
 
 public class GameState {
@@ -48,7 +47,12 @@ public class GameState {
 		
 		this.Bank = this.Bank - purchased.Cost;
 		
-		this.Shop.addElement(purchased);
+		// This copies a reference to the original
+		//this.Shop.addElement(purchased);
+		
+		// This instead creates a new copy of the item
+		this.Shop.addElement(new Candy(purchased.Name, purchased.Cost));
+		
 		this.shopSelectedIndex = 0;
 		updateTopPanel();
 		return true;
@@ -82,9 +86,26 @@ public class GameState {
 		for (int i = this.Shop.size() - 1; i >= 0; i--) {
 			// generate a random number between 0 and 1
 			// if number is above a threshold, sell the item
-			sellCandy(i);
+			
+			if (this.Shop.getElementAt(i).isExpired()) {
+				// delete it
+				System.out.println(this.Shop.getElementAt(i).Name + " has expired.");
+				this.Shop.removeElementAt(i);
+			} else {
+				int threshold = RandomIntInRange(30, 95);
+				
+				if (RandomIntInRange(1, 100) >= threshold) {
+					sellCandy(i);
+				}
+			}
+			
+			
 		}
 		
 		updateTopPanel();
+	}
+	
+	public int RandomIntInRange(int min, int max) {
+		return (int) ((Math.random() * (max - min)) + min);
 	}
 }
